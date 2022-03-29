@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jisu/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jisu/docker-react npm run  -- --coverage
